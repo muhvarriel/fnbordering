@@ -60,7 +60,7 @@
             android:layout_marginTop="5dp"
             android:textSize="22sp"
             android:textColor="@color/white"
-            android:text="IDR 50.000"/>
+            android:text=""/>
 
         <LinearLayout
             android:layout_marginTop="20dp"

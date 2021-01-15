@@ -69,10 +69,10 @@
             android:fontFamily="@font/montserrat"
             android:hint="Name"
             android:paddingHorizontal="20dp"
-            android:text="Wisnu"
+            android:text=""
             android:textColor="@color/bg"
             android:textColorHint="@color/bg"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/edtPassword"
@@ -84,10 +84,10 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:paddingHorizontal="20dp"
-            android:text="123456"
+            android:text=""
             android:textColor="@color/bg"
             android:textColorHint="@color/bg"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <EditText
             android:id="@+id/edtLocation"
@@ -98,10 +98,10 @@
             android:fontFamily="@font/montserrat"
             android:hint="Address"
             android:paddingHorizontal="20dp"
-            android:text="Jakarta"
+            android:text=""
             android:textColor="@color/bg"
             android:textColorHint="@color/bg"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <Button
             android:id="@+id/btnEdtProfile"

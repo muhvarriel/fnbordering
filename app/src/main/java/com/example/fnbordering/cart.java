@@ -62,14 +62,6 @@ public class cart extends AppCompatActivity {
             }
         });
 
-        btnCheckout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent back = new Intent(cart.this, checkout.class);
-                startActivity(back);
-            }
-        });
-
         //init
         database = FirebaseDatabase.getInstance();
         request = database.getReference("Requests");
@@ -80,24 +72,24 @@ public class cart extends AppCompatActivity {
         txtTotal = (TextView)findViewById(R.id.txtTotal);
         btnCheckout = (Button)findViewById(R.id.btnCheckout);
 
-        request.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(cart.this,"Something wrong",Toast.LENGTH_SHORT).show();
-            }
-        });
+        cart = new Database(this).getCarts();
+        adapter = new cartAdapter(cart,this);
+        listCart.setAdapter(adapter);
 
         int total = 0;
-
         for (Order order: cart) {
             total += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
         }
 
         txtTotal.setText("IDR " + total);
+
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(cart.this, checkout.class);
+                startActivity(back);
+            }
+        });
     }
 
 }
