@@ -4,13 +4,8 @@ package com.example.fnbordering;
         import android.os.Handler;
         import android.os.Bundle;
         import android.os.Looper;
-        import android.widget.Toast;
 
-        import androidx.annotation.NonNull;
         import androidx.appcompat.app.AppCompatActivity;
-
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
