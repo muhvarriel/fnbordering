@@ -1,50 +1,55 @@
 package com.example.fnbordering.Model;
 
 public class User {
-    private String Name;
-    private String Password;
-    private int Balance;
-    private String Location;
+    public String name, password, location, balance, username;
 
     public User() {
     }
 
-    public User(String name, String password, int balance, String location) {
-        Name = name;
-        Password = password;
-        Balance = balance;
-        Location = location;
+    public User(String name, String password, String balance, String location) {
+        this.name = name;
+        this.password = password;
+        this.balance = balance;
+        this.location = location;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String password) {
-        Password = password;
-    }
-
-    public int getBalance() {
-        return Balance;
-    }
-
-    public void setBalance(int balance) {
-        Balance = balance;
+        this.password = password;
     }
 
     public String getLocation() {
-        return Location;
+        return location;
     }
 
     public void setLocation(String location) {
-        Location = location;
+        this.location = location;
+    }
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

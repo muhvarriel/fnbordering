@@ -1,50 +1,83 @@
 package com.example.fnbordering.Model;
 
-public class Category {
-    private String Name;
-    private String Image;
-    private String Location;
-    private String Range;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.nio.charset.Charset;
+
+public class Category implements Parcelable {
+    private String name, location, range, categoryId;
 
     public Category() {
     }
 
-    public Category(String name, String image, String location, String range) {
-        Name = name;
-        Image = image;
-        Location = location;
-        Range = range;
+    public Category(String name, String location, String range) {
+        this.name = name;
+        this.location = location;
+        this.range = range;
     }
 
-    public String getLocation() {
-        return Location;
+    protected Category(Parcel in) {
+        name = in.readString();
+        location = in.readString();
+        range = in.readString();
+        categoryId = in.readString();
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeString(location);
+        dest.writeString(range);
+        dest.writeString(categoryId);
     }
 
-    public String getRange() {
-        return Range;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public void setRange(String range) {
-        Range = range;
-    }
+    public static final Creator<Category> CREATOR = new Creator<Category>() {
+        @Override
+        public Category createFromParcel(Parcel in) {
+            return new Category(in);
+        }
+
+        @Override
+        public Category[] newArray(int size) {
+            return new Category[size];
+        }
+    };
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
-    public String getImage() {
-        return Image;
+    public String getLocation() {
+        return location;
     }
 
-    public void setImage(String image) {
-        Image = image;
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getRange() {
+        return range;
+    }
+
+    public void setRange(String range) {
+        this.range = range;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 }

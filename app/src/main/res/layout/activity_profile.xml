@@ -15,7 +15,8 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/bg"
+        android:backgroundTint="@color/bg"
+        android:background="@drawable/rounded_bg"
         android:padding="40dp">
 
         <LinearLayout
@@ -31,65 +32,74 @@
                 android:background="@drawable/backward_arrow"/>
 
             <TextView
-                android:layout_marginStart="60dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:layout_marginStart="60dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Profile"
                 android:textColor="@color/white"
-                android:text="Profile"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txtFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:fontFamily="@font/montserrat"
+            android:text="Varriel Nizar"
             android:textColor="@color/white"
-            android:text="Varriel Nizar"/>
+            android:textSize="25sp" />
 
         <TextView
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:text="Buyer"
             android:textColor="@color/white"
-            android:text="Buyer"/>
+            android:textSize="15sp" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:textSize="13sp"
+            android:fontFamily="@font/montserrat"
+            android:text="Current Cash"
             android:textColor="@color/white"
-            android:text="Current Cash"/>
+            android:textSize="13sp" />
 
         <TextView
+            android:id="@+id/txtBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="22sp"
+            android:fontFamily="@font/montserrat"
+            android:text="IDR 50.000"
             android:textColor="@color/white"
-            android:text="IDR 50.000"/>
+            android:textSize="22sp" />
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:textSize="13sp"
+            android:fontFamily="@font/montserrat"
+            android:text="Username"
             android:textColor="@color/white"
-            android:text="Username"/>
+            android:textSize="13sp" />
 
         <TextView
+            android:id="@+id/txtUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="22sp"
+            android:fontFamily="@font/montserrat"
             android:textColor="@color/white"
-            android:text="hazrd"/>
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_marginTop="100dp"
@@ -99,37 +109,40 @@
 
             <Button
                 android:id="@+id/btnHistory"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="History"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/btnEdit"
-                android:layout_marginStart="10dp"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="Edit Profile"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/btnSignout"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/login"
             android:layout_width="250dp"
             android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/login"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Sign Out"
             android:textAllCaps="false"
-            android:textSize="12sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

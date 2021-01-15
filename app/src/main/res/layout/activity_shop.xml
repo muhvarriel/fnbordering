@@ -15,7 +15,8 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/bg"
+        android:backgroundTint="@color/bg"
+        android:background="@drawable/rounded_bg"
         android:padding="40dp">
 
         <LinearLayout
@@ -31,70 +32,43 @@
                 android:background="@drawable/backward_arrow"/>
 
             <TextView
-                android:layout_marginStart="60dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:layout_marginStart="60dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Menu"
                 android:textColor="@color/white"
-                android:text="Menu"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txtFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:fontFamily="@font/montserrat"
+            android:text="Name Restaurant"
             android:textColor="@color/white"
-            android:text="Name Restaurant"/>
+            android:textSize="25sp" />
 
         <TextView
-            android:layout_gravity="center"
+            android:id="@+id/txtLocation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Location"
             android:textColor="@color/white"
-            android:text="Location"/>
+            android:textSize="15sp" />
 
-        <LinearLayout
-            android:id="@+id/btnFood"
-            android:orientation="horizontal"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@color/login"
-            android:padding="20dp">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/logo"/>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name Food"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="IDR 50.000"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
+        <include
+            layout="@layout/food_list"
+            android:layout_width="match_parent"
+            android:layout_height="375dp" />
 
     </LinearLayout>
 

@@ -7,17 +7,13 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".food"
-    android:layout_marginStart="40dp">
-
+    tools:context=".food">
 
     <LinearLayout
         android:gravity="center_vertical"
         android:background="@drawable/food01"
-        android:orientation="horizontal"
-        android:layout_width="330dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="130dp"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
         android:padding="20dp">
 
         <Button
@@ -26,40 +22,58 @@
             android:layout_height="32dp"
             android:background="@drawable/backward_arrow"/>
 
+
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:background="@color/bg"
         android:padding="40dp">
 
         <TextView
-            android:layout_gravity="center"
+            android:id="@+id/txtFoodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:text="Name Food"
             android:textColor="@color/white"
-            android:text="Name Food"/>
+            android:textSize="25sp" />
 
         <TextView
-            android:layout_gravity="center"
+            android:id="@+id/txtFoodPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:text="Price"
             android:textColor="@color/white"
-            android:text="Location"/>
+            android:textSize="15sp" />
 
         <TextView
-            android:layout_gravity="center"
+            android:id="@+id/txtDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:textSize="15sp"
+            android:fontFamily="@font/montserrat"
+            android:text="Description"
             android:textColor="@color/white"
-            android:text="Description"/>
+            android:textSize="15sp" />
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/txtId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:text="Name Food"
+            android:textColor="@color/white"
+            android:textSize="15sp" />
 
         <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
             android:id="@+id/numberButton"
@@ -73,16 +87,17 @@
         </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
 
         <Button
-            android:gravity="center"
             android:id="@+id/btnAddcart"
-            android:backgroundTint="@color/login"
             android:layout_width="250dp"
             android:layout_height="70dp"
             android:layout_marginTop="150dp"
+            android:backgroundTint="@color/login"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
             android:text="Add to Cart"
             android:textAllCaps="false"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

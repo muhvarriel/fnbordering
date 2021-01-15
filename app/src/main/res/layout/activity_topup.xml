@@ -15,7 +15,8 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:background="@color/bg"
+        android:backgroundTint="@color/bg"
+        android:background="@drawable/rounded_bg"
         android:padding="40dp">
 
         <LinearLayout
@@ -31,47 +32,52 @@
                 android:background="@drawable/backward_arrow"/>
 
             <TextView
-                android:layout_marginStart="60dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
+                android:layout_marginStart="60dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Top Up"
                 android:textColor="@color/white"
-                android:text="Top Up"/>
+                android:textSize="20sp" />
 
         </LinearLayout>
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:fontFamily="@font/montserrat"
+            android:text="Varriel Nizar"
             android:textColor="@color/white"
-            android:text="Varriel Nizar"/>
-
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="@color/white"
-            android:text="Buyer"/>
+            android:textSize="25sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textSize="13sp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/montserrat"
+            android:text="Buyer"
             android:textColor="@color/white"
-            android:text="Current Cash"/>
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Current Cash"
+            android:textColor="@color/white"
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="22sp"
+            android:fontFamily="@font/montserrat"
+            android:text="IDR 50.000"
             android:textColor="@color/white"
-            android:text="IDR 50.000"/>
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_marginTop="100dp"
@@ -81,24 +87,26 @@
 
             <Button
                 android:id="@+id/btn10"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="IDR 10.000"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/btn20"
-                android:layout_marginStart="10dp"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="IDR 20.000"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -108,24 +116,26 @@
 
             <Button
                 android:id="@+id/btn50"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="IDR 50.000"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/btn100"
-                android:layout_marginStart="10dp"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="IDR 100.000"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -135,37 +145,40 @@
 
             <Button
                 android:id="@+id/btn200"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="IDR 200.000"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
             <Button
                 android:id="@+id/btn500"
-                android:layout_marginStart="10dp"
-                android:backgroundTint="@color/login"
                 android:layout_width="120dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
                 android:text="IDR 500.000"
                 android:textAllCaps="false"
-                android:textSize="11sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:textSize="11sp" />
 
         </LinearLayout>
 
         <Button
             android:id="@+id/btnTopup"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/login"
             android:layout_width="250dp"
             android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/login"
+            android:fontFamily="@font/montserrat_bold"
             android:text="Top Up"
             android:textAllCaps="false"
-            android:textSize="12sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

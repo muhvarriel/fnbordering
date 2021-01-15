@@ -39,8 +39,7 @@ public class register extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(register.this, login.class);
-                startActivity(back);
+                finish();
             }
         });
 
@@ -65,12 +64,11 @@ public class register extends AppCompatActivity {
                             Toast.makeText(register.this, "Username already register", Toast.LENGTH_SHORT).show();
                         } else {
                             mDialog.dismiss();
-                            User user = new User(edtName.getText().toString(), edtPassword.getText().toString(), 50000, "none");
+                            User user = new User(edtName.getText().toString(), edtPassword.getText().toString(), "50000", "none");
                             table_user.child(edtUsername.getText().toString()).setValue(user);
                             Toast.makeText(register.this, "Register successfully !", Toast.LENGTH_SHORT).show();
                             finish();
                         }
-
                     }
 
                     @Override

@@ -34,8 +34,7 @@ public class checkout extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(checkout.this, cart.class);
-                startActivity(back);
+                finish();
             }
         });
 

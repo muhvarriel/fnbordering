@@ -1,16 +1,39 @@
 package com.example.fnbordering;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.fnbordering.Model.Category;
+import com.example.fnbordering.Model.Food;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class shop extends AppCompatActivity {
+    public static String EXTRA_SHOP = "extra_shop";
+
+    FirebaseDatabase database;
+    DatabaseReference food;
+    RecyclerView listFood;
+    ArrayList<Food> list;
+    foodAdapter adapter;
+
     Button btnBack;
-    LinearLayout btnFood;
+    TextView txtFullName, txtLocation, txtId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,21 +41,47 @@ public class shop extends AppCompatActivity {
         setContentView(R.layout.activity_shop);
 
         btnBack = (Button)findViewById(R.id.btnBack);
-        btnFood = (LinearLayout) findViewById(R.id.btnFood);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent back = new Intent(shop.this, homepage.class);
-                startActivity(back);
+                finish();
             }
         });
 
-        btnFood.setOnClickListener(new View.OnClickListener() {
+        //init
+        listFood = (RecyclerView) findViewById(R.id.listFood);
+        listFood.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
+
+        database = FirebaseDatabase.getInstance();
+        food = database.getReference("Food");
+
+        txtFullName = (TextView) findViewById(R.id.txtFullName);
+        txtLocation = (TextView) findViewById(R.id.txtLocation);
+        txtId = (TextView) findViewById(R.id.txtId);
+
+        Category shop = getIntent().getParcelableExtra(EXTRA_SHOP);
+
+        txtFullName.setText(shop.getName());
+        txtLocation.setText(shop.getLocation());
+        txtId.setText(shop.getCategoryId());
+
+        food.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Intent back = new Intent(shop.this, food.class);
-                startActivity(back);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    Food p = dataSnapshot.getValue(Food.class);
+                    list.add(p);
+                }
+
+                adapter = new foodAdapter(shop.this,list);
+                listFood.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(shop.this,"Something wrong",Toast.LENGTH_SHORT).show();
             }
         });
     }
