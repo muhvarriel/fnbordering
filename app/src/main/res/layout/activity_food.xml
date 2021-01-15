@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".food"
+    android:layout_marginStart="40dp">
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:background="@drawable/food01"
+        android:orientation="horizontal"
+        android:layout_width="330dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="130dp"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/backward_arrow"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/bg"
+        android:padding="40dp">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:text="Name Food"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:text="Location"/>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:text="Description"/>
+
+        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+            android:id="@+id/numberButton"
+            android:layout_marginTop="30dp"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            app:textColor="@color/white"
+            app:textSize="8sp"
+            app:backGroundColor="@color/login">
+
+        </com.cepheuen.elegantnumberbutton.view.ElegantNumberButton>
+
+        <Button
+            android:gravity="center"
+            android:id="@+id/btnAddcart"
+            android:backgroundTint="@color/login"
+            android:layout_width="250dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="150dp"
+            android:text="Add to Cart"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</LinearLayout>

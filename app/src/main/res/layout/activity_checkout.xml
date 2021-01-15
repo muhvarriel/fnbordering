@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".checkout"
+    android:gravity="center">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="330dp"
+        android:layout_height="550dp"
+        android:background="@color/bg"
+        android:padding="40dp">
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/backward_arrow"/>
+
+            <TextView
+                android:layout_marginStart="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text="Checkout"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            android:text="Address"/>
+
+        <EditText
+            android:id="@+id/edtUsername"
+            android:background="@color/white"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:hint="Address"
+            android:text="Jl. TB Simatupang No. 50"
+            android:textColor="@color/bg"
+            android:textSize="13sp"
+            android:paddingHorizontal="20dp"
+            android:textColorHint="@color/bg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            android:text="Total"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:text="IDR 50.000"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/white"
+            android:text="Current Cash"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:text="IDR 50.000"/>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnTopup"
+                android:backgroundTint="@color/sub2"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="Top Up"
+                android:textAllCaps="false"
+                android:textSize="11sp"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnOrder"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@color/login"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
+                android:text="Place Order"
+                android:textAllCaps="false"
+                android:textSize="11sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
