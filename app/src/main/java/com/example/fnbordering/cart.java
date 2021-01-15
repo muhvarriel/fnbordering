@@ -1,5 +1,6 @@
 package com.example.fnbordering;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,11 +10,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fnbordering.Database.Database;
+import com.example.fnbordering.Model.Category;
+import com.example.fnbordering.Model.Food;
 import com.example.fnbordering.Model.Order;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +29,9 @@ public class cart extends AppCompatActivity {
     Button btnBack, btnHome, btnCheckout;
 
     FirebaseDatabase database;
-    DatabaseReference request;
+    DatabaseReference order;
     RecyclerView listCart;
-    List<Order> cart = new ArrayList<>();
+    ArrayList<Order> list;
     cartAdapter adapter;
 
     TextView txtTotal;
@@ -52,22 +59,33 @@ public class cart extends AppCompatActivity {
             }
         });
 
-        //init
-        database = FirebaseDatabase.getInstance();
-        request = database.getReference("Requests");
-
         listCart = (RecyclerView) findViewById(R.id.listCart);
         listCart.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
 
-        txtTotal = (TextView)findViewById(R.id.txtTotal);
-        btnCheckout = (Button)findViewById(R.id.btnCheckout);
+        database = FirebaseDatabase.getInstance();
+        order = database.getReference("Requests");
 
-        cart = new Database(this).getCarts();
-        adapter = new cartAdapter(cart,this);
-        listCart.setAdapter(adapter);
+        order.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    Order p = dataSnapshot.getValue(Order.class);
+                    list.add(p);
+                }
+
+                adapter = new cartAdapter(cart.this,list);
+                listCart.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(cart.this,"Something wrong",Toast.LENGTH_SHORT).show();
+            }
+        });
 
         int total = 0;
-        for (Order order: cart) {
+        for (Order order: list) {
             total += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
         }
 

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.fnbordering.Model.Food;
 import com.example.fnbordering.Model.Order;
 
 import java.util.ArrayList;
@@ -19,11 +20,11 @@ import java.util.List;
 public class cartAdapter extends RecyclerView.Adapter<cartAdapter.cartViewHolder> {
 
     Context context;
-    List<Order> listData = new ArrayList<>();
+    ArrayList<Order> listData;
 
-    public cartAdapter(List<Order> listData, Context context) {
-        this.listData = listData;
-        this.context = context;
+    public cartAdapter(Context c, ArrayList<Order> p) {
+        context = c;
+        listData = p;
     }
 
     @NonNull
