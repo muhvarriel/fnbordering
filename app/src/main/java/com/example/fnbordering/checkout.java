@@ -1,7 +1,7 @@
 package com.example.fnbordering;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,22 +9,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.fnbordering.Common.Common;
-import com.example.fnbordering.Database.Database;
-import com.example.fnbordering.Model.Order;
+import com.example.fnbordering.Model.Cart;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class checkout extends AppCompatActivity {
     FirebaseDatabase database;
-    DatabaseReference request;
-    RecyclerView listCart;
-    List<Order> cart = new ArrayList<>();
-    cartAdapter adapter;
+    DatabaseReference cart;
 
     Button btnBack, btnTopup, btnOrder;
     TextView txtTotal, txtBalance;
@@ -38,7 +38,6 @@ public class checkout extends AppCompatActivity {
         btnBack = (Button)findViewById(R.id.btnBack);
         btnTopup = (Button)findViewById(R.id.btnTopup);
         btnOrder = (Button)findViewById(R.id.btnOrder);
-        btnTopup = (Button) findViewById(R.id.btnTopup);
 
         btnTopup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,40 +54,47 @@ public class checkout extends AppCompatActivity {
             }
         });
 
-        btnTopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent back = new Intent(checkout.this, topup.class);
-                startActivity(back);
-            }
-        });
-
-        btnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent back = new Intent(checkout.this, success.class);
-                startActivity(back);
-            }
-        });
-
         //init
         database = FirebaseDatabase.getInstance();
-        request = database.getReference("Requests");
+        cart = database.getReference("Cart");
 
-        edtLocation = (EditText) findViewById(R.id.edtLocation);
         txtBalance = (TextView) findViewById(R.id.txtBalance);
+        edtLocation = (EditText) findViewById(R.id.edtLocation);
 
-        edtLocation.setText(Common.currentUse.location);
+        edtLocation.setText(Common.currentUse.location, TextView.BufferType.EDITABLE);
 
         int i = Integer.parseInt(Common.currentUse.balance.trim());
         txtBalance.setText("IDR " + i);
 
-        cart = new Database(this).getCarts();
-        int total = 0;
-        for (Order order: cart) {
-            total += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
-        }
+        cart.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int total = 0;
 
-        txtTotal.setText("IDR " + total);
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    Cart p = dataSnapshot.getValue(Cart.class);
+                    total += (Integer.parseInt(p.getPrice())) * (Integer.parseInt(p.getQuantity()));
+                }
+
+                txtTotal = (TextView) findViewById(R.id.txtTotal);
+
+                txtTotal.setText("IDR " + total);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(checkout.this,"Something wrong",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //InitFirebase
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference history = database.getReference("History");
+
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 }

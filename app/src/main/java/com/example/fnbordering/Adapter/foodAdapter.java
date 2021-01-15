@@ -1,4 +1,4 @@
-package com.example.fnbordering;
+package com.example.fnbordering.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.fnbordering.R;
+import com.example.fnbordering.food;
 import com.example.fnbordering.Model.Food;
 
 import java.util.ArrayList;

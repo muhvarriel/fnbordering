@@ -1,16 +1,17 @@
 package com.example.fnbordering.Model;
 
-public class Order {
-    private String ProductId, ProductName, Quantity, Price;
+public class Cart {
+    private String ProductId, ProductName, Quantity, Price, User;
 
-    public Order() {
+    public Cart() {
     }
 
-    public Order(String productId, String productName, String quantity, String price) {
+    public Cart(String productId, String productName, String quantity, String price, String user) {
         ProductId = productId;
         ProductName = productName;
         Quantity = quantity;
         Price = price;
+        User = user;
     }
 
     public String getProductId() {
@@ -43,5 +44,13 @@ public class Order {
 
     public void setPrice(String price) {
         Price = price;
+    }
+
+    public String getUser() {
+        return User;
+    }
+
+    public void setUser(String user) {
+        User = user;
     }
 }

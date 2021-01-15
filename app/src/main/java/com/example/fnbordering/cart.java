@@ -12,10 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fnbordering.Database.Database;
-import com.example.fnbordering.Model.Category;
-import com.example.fnbordering.Model.Food;
-import com.example.fnbordering.Model.Order;
+import com.example.fnbordering.Adapter.cartAdapter;
+import com.example.fnbordering.Model.Cart;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,9 +27,9 @@ public class cart extends AppCompatActivity {
     Button btnBack, btnHome, btnCheckout;
 
     FirebaseDatabase database;
-    DatabaseReference order;
+    DatabaseReference cart;
     RecyclerView listCart;
-    ArrayList<Order> list;
+    ArrayList<Cart> list;
     cartAdapter adapter;
 
     TextView txtTotal;
@@ -43,6 +41,7 @@ public class cart extends AppCompatActivity {
 
         btnBack = (Button)findViewById(R.id.btnBack);
         btnHome = (Button)findViewById(R.id.btnHome);
+        btnCheckout = (Button)findViewById(R.id.btnCheckout);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,43 +58,44 @@ public class cart extends AppCompatActivity {
             }
         });
 
-        listCart = (RecyclerView) findViewById(R.id.listCart);
-        listCart.setLayoutManager(new LinearLayoutManager(this));
-        list = new ArrayList<>();
-
-        database = FirebaseDatabase.getInstance();
-        order = database.getReference("Requests");
-
-        order.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    Order p = dataSnapshot.getValue(Order.class);
-                    list.add(p);
-                }
-
-                adapter = new cartAdapter(cart.this,list);
-                listCart.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(cart.this,"Something wrong",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        int total = 0;
-        for (Order order: list) {
-            total += (Integer.parseInt(order.getPrice())) * (Integer.parseInt(order.getQuantity()));
-        }
-
-        txtTotal.setText("IDR " + total);
-
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent back = new Intent(cart.this, checkout.class);
                 startActivity(back);
+            }
+        });
+
+        //init
+        listCart = (RecyclerView) findViewById(R.id.listCart);
+        listCart.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
+
+        database = FirebaseDatabase.getInstance();
+        cart = database.getReference("Cart");
+
+        cart.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int total = 0;
+
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    Cart p = dataSnapshot.getValue(Cart.class);
+                    list.add(p);
+                    total += (Integer.parseInt(p.getPrice())) * (Integer.parseInt(p.getQuantity()));
+                }
+
+                adapter = new cartAdapter(cart.this,list);
+                listCart.setAdapter(adapter);
+
+                txtTotal = (TextView) findViewById(R.id.txtTotal);
+
+                txtTotal.setText("IDR " + total);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(cart.this,"Something wrong",Toast.LENGTH_SHORT).show();
             }
         });
     }

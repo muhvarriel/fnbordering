@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fnbordering.Adapter.foodAdapter;
-import com.example.fnbordering.Model.Food;
-import com.example.fnbordering.Model.Shop;
+import com.example.fnbordering.Adapter.historyAdapter;
+import com.example.fnbordering.Common.Common;
+import com.example.fnbordering.Model.History;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,22 +21,19 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class shop extends AppCompatActivity {
-    public static String EXTRA_SHOP = "extra_shop";
+public class history extends AppCompatActivity {
+    Button btnBack;
 
     FirebaseDatabase database;
-    DatabaseReference food;
-    RecyclerView listFood;
-    ArrayList<Food> list;
-    foodAdapter adapter;
-
-    Button btnBack;
-    TextView txtFullName, txtLocation;
+    DatabaseReference history, userHistory;
+    RecyclerView listHistory;
+    ArrayList<History> list;
+    historyAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop);
+        setContentView(R.layout.activity_history);
 
         btnBack = (Button)findViewById(R.id.btnBack);
 
@@ -49,37 +45,31 @@ public class shop extends AppCompatActivity {
         });
 
         //init
-        listFood = (RecyclerView) findViewById(R.id.listFood);
-        listFood.setLayoutManager(new LinearLayoutManager(this));
+        listHistory = (RecyclerView) findViewById(R.id.listHistory);
+        listHistory.setLayoutManager(new LinearLayoutManager(this));
         list = new ArrayList<>();
 
         database = FirebaseDatabase.getInstance();
-        food = database.getReference("Food");
+        history = database.getReference("History");
+        userHistory = history.child(Common.currentUse.username);
 
-        txtFullName = (TextView) findViewById(R.id.txtFullName);
-        txtLocation = (TextView) findViewById(R.id.txtLocation);
-
-        Shop shop = getIntent().getParcelableExtra(EXTRA_SHOP);
-
-        txtFullName.setText(shop.getName());
-        txtLocation.setText(shop.getLocation());
-
-        food.addValueEventListener(new ValueEventListener() {
+        userHistory.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    Food p = dataSnapshot.getValue(Food.class);
+                    History p = dataSnapshot.getValue(History.class);
                     list.add(p);
                 }
 
-                adapter = new foodAdapter(shop.this,list);
-                listFood.setAdapter(adapter);
+                adapter = new historyAdapter(history.this,list);
+                listHistory.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(shop.this,"Something wrong",Toast.LENGTH_SHORT).show();
+                Toast.makeText(history.this,"Something wrong",Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 }

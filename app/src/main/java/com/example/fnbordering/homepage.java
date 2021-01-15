@@ -13,23 +13,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fnbordering.Adapter.shopAdapter;
 import com.example.fnbordering.Common.Common;
+import com.example.fnbordering.Model.Shop;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 
-import com.example.fnbordering.Model.Category;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class homepage extends AppCompatActivity {
     FirebaseDatabase database;
-    DatabaseReference category;
+    DatabaseReference shop;
     RecyclerView listShop;
-    ArrayList<Category> list;
+    ArrayList<Shop> list;
     shopAdapter adapter;
 
     TextView txtFullName, txtBalance;
@@ -78,7 +79,7 @@ public class homepage extends AppCompatActivity {
         list = new ArrayList<>();
 
         database = FirebaseDatabase.getInstance();
-        category = database.getReference("Category");
+        shop = database.getReference("Shop");
 
         txtFullName = (TextView) findViewById(R.id.txtFullName);
         txtBalance = (TextView) findViewById(R.id.txtBalance);
@@ -88,11 +89,11 @@ public class homepage extends AppCompatActivity {
         int i = Integer.parseInt(Common.currentUse.balance.trim());
         txtBalance.setText("IDR " + i);
 
-        category.addValueEventListener(new ValueEventListener() {
+        shop.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    Category p = dataSnapshot.getValue(Category.class);
+                    Shop p = dataSnapshot.getValue(Shop.class);
                     list.add(p);
                 }
 

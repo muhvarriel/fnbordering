@@ -30,6 +30,7 @@ public class profile extends AppCompatActivity {
 
         btnBack = (Button)findViewById(R.id.btnBack);
         btnEdit = (Button)findViewById(R.id.btnEdit);
+        btnHistory = (Button)findViewById(R.id.btnHistory);
         btnSignout = (Button)findViewById(R.id.btnSignout);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +44,14 @@ public class profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent back = new Intent(profile.this, editprofile.class);
+                startActivity(back);
+            }
+        });
+
+        btnHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(profile.this, history.class);
                 startActivity(back);
             }
         });

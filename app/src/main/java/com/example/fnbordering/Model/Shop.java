@@ -5,19 +5,19 @@ import android.os.Parcelable;
 
 import java.nio.charset.Charset;
 
-public class Category implements Parcelable {
+public class Shop implements Parcelable {
     private String name, location, range, categoryId;
 
-    public Category() {
+    public Shop() {
     }
 
-    public Category(String name, String location, String range) {
+    public Shop(String name, String location, String range) {
         this.name = name;
         this.location = location;
         this.range = range;
     }
 
-    protected Category(Parcel in) {
+    protected Shop(Parcel in) {
         name = in.readString();
         location = in.readString();
         range = in.readString();
@@ -37,15 +37,15 @@ public class Category implements Parcelable {
         return 0;
     }
 
-    public static final Creator<Category> CREATOR = new Creator<Category>() {
+    public static final Creator<Shop> CREATOR = new Creator<Shop>() {
         @Override
-        public Category createFromParcel(Parcel in) {
-            return new Category(in);
+        public Shop createFromParcel(Parcel in) {
+            return new Shop(in);
         }
 
         @Override
-        public Category[] newArray(int size) {
-            return new Category[size];
+        public Shop[] newArray(int size) {
+            return new Shop[size];
         }
     };
 

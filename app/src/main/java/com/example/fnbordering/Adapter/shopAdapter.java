@@ -1,4 +1,4 @@
-package com.example.fnbordering;
+package com.example.fnbordering.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,37 +11,39 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fnbordering.Model.Category;
+import com.example.fnbordering.Model.Shop;
+import com.example.fnbordering.shop;
+import com.example.fnbordering.R;
 
 import java.util.ArrayList;
 
 public class shopAdapter extends RecyclerView.Adapter<shopAdapter.shopViewHolder> {
 
     Context context;
-    ArrayList<Category> categories;
+    ArrayList<Shop> shopies;
 
-    public shopAdapter(Context c, ArrayList<Category> p) {
+    public shopAdapter(Context c, ArrayList<Shop> p) {
         context = c;
-        categories = p;
+        shopies = p;
     }
 
     @NonNull
     @Override
     public shopViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new shopViewHolder(LayoutInflater.from(context).inflate(R.layout.item_restaurant,parent,false));
+        return new shopViewHolder(LayoutInflater.from(context).inflate(R.layout.item_shop,parent,false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull shopViewHolder holder, int position) {
-        holder.nameView.setText(categories.get(position).getName());
-        holder.locationView.setText(categories.get(position).getLocation());
-        holder.rangeView.setText("IDR " + categories.get(position).getRange());
+        holder.nameView.setText(shopies.get(position).getName());
+        holder.locationView.setText(shopies.get(position).getLocation());
+        holder.rangeView.setText("IDR " + shopies.get(position).getRange());
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent mShop = new Intent(context, shop.class);
-                mShop.putExtra(shop.EXTRA_SHOP, categories.get(position));
+                mShop.putExtra(shop.EXTRA_SHOP, shopies.get(position));
                 context.startActivity(mShop);
             }
         });
@@ -49,7 +51,7 @@ public class shopAdapter extends RecyclerView.Adapter<shopAdapter.shopViewHolder
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return shopies.size();
     }
 
     class shopViewHolder extends RecyclerView.ViewHolder {

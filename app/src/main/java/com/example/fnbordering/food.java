@@ -1,5 +1,6 @@
 package com.example.fnbordering;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,13 +12,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
-import com.example.fnbordering.Database.Database;
+import com.example.fnbordering.Common.Common;
+import com.example.fnbordering.Model.Cart;
 import com.example.fnbordering.Model.Food;
-import com.example.fnbordering.Model.Order;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
+import com.google.firebase.database.ValueEventListener;
 
 public class food extends AppCompatActivity {
     public static final String EXTRA_FOOD = "extra_food";
@@ -34,6 +36,7 @@ public class food extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food);
+        String TAG = "Add Cart";
 
         Food currentFood = getIntent().getParcelableExtra(EXTRA_FOOD);
 
@@ -70,20 +73,30 @@ public class food extends AppCompatActivity {
         txtId.setText(currentFood.getId());
         txtDesc.setText(currentFood.getDesc());
 
+        //InitFirebase
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference order = database.getReference("Order");
+        DatabaseReference newPostRef = order.push();
+
         btnAddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new Database(getBaseContext()).addToCart(new Order(
-                        EXTRA_FOOD,
-                        currentFood.getName(),
-                        numberButton.getNumber(),
-                        currentFood.getPrice()
-                ));
+                order.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        Cart order = new Cart(currentFood.getId(), currentFood.getName(), numberButton.getNumber(), currentFood.getPrice(), Common.currentUse.username);
+                        newPostRef.setValue(order);
 
-                Toast.makeText(food.this,"Add cart",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(food.this, "Add To Successfully !", Toast.LENGTH_SHORT).show();
+                        Intent back = new Intent(food.this, cart.class);
+                        startActivity(back);
+                    }
 
-                Intent back = new Intent(food.this, cart.class);
-                startActivity(back);
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d(TAG,database.toString());
+                    }
+                });
             }
         });
     }
