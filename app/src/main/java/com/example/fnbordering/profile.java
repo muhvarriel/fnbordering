@@ -29,12 +29,21 @@ public class profile extends AppCompatActivity {
         txtUsername.setText(Common.currentUse.username);
 
         btnBack = (Button)findViewById(R.id.btnBack);
+        btnEdit = (Button)findViewById(R.id.btnEdit);
         btnSignout = (Button)findViewById(R.id.btnSignout);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent back = new Intent(profile.this, editprofile.class);
+                startActivity(back);
             }
         });
 

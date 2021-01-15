@@ -98,8 +98,11 @@ public class homepage extends AppCompatActivity {
 
         txtFullName = (TextView) findViewById(R.id.txtFullName);
         txtBalance = (TextView) findViewById(R.id.txtBalance);
+
         txtFullName.setText(Common.currentUse.name);
-        txtBalance.setText("IDR " + Common.currentUse.balance);
+
+        int i = Integer.parseInt(Common.currentUse.balance.trim());
+        txtBalance.setText("IDR " + i);
 
         category.addValueEventListener(new ValueEventListener() {
             @Override

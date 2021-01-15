@@ -43,6 +43,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/txtFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -71,6 +72,7 @@
             android:textSize="13sp" />
 
         <TextView
+            android:id="@+id/txtBalance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -80,7 +82,7 @@
             android:textSize="22sp" />
 
         <LinearLayout
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="150dp"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
@@ -167,18 +169,6 @@
                 android:textSize="11sp" />
 
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btnTopup"
-            android:layout_width="250dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/login"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="Top Up"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
 
     </LinearLayout>
 

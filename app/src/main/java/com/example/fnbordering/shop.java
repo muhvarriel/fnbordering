@@ -33,7 +33,7 @@ public class shop extends AppCompatActivity {
     foodAdapter adapter;
 
     Button btnBack;
-    TextView txtFullName, txtLocation, txtId;
+    TextView txtFullName, txtLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +59,11 @@ public class shop extends AppCompatActivity {
 
         txtFullName = (TextView) findViewById(R.id.txtFullName);
         txtLocation = (TextView) findViewById(R.id.txtLocation);
-        txtId = (TextView) findViewById(R.id.txtId);
 
         Category shop = getIntent().getParcelableExtra(EXTRA_SHOP);
 
         txtFullName.setText(shop.getName());
         txtLocation.setText(shop.getLocation());
-        txtId.setText(shop.getCategoryId());
 
         food.addValueEventListener(new ValueEventListener() {
             @Override

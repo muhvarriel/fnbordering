@@ -62,7 +62,7 @@
             android:fontFamily="@font/montserrat"
             android:text="Location"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="10sp" />
 
 
         <include

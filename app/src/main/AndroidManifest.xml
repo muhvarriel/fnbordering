@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FnBOrdering"
         tools:replace="android:theme">
-        <activity android:name=".topup"></activity>
+        <activity android:name=".editprofile"></activity>
+        <activity android:name=".topup" />
         <activity android:name=".success" />
         <activity android:name=".checkout" />
         <activity android:name=".cart" />

@@ -72,7 +72,7 @@ public class food extends AppCompatActivity {
         txtDesc = (TextView) findViewById(R.id.txtDesc);
 
         txtFoodName.setText(currentFood.getName());
-        txtFoodPrice.setText(currentFood.getPrice());
+        txtFoodPrice.setText("IDR " + currentFood.getPrice());
         txtId.setText(currentFood.getId());
         txtDesc.setText(currentFood.getDesc());
 

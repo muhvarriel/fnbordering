@@ -44,10 +44,8 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.cartViewHolder
 
         TextDrawable drawable = TextDrawable.builder()
                 .buildRound(""+listData.get(position).getQuantity(), Color.RED);
-        Locale locale = new Locale("en","US");
-        NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
         int price = (Integer.parseInt(listData.get(position).getPrice()))*(Integer.parseInt(listData.get(position).getQuantity()));
-        holder.priceView.setText(fmt.format(price));
+        holder.priceView.setText("IDR " + price);
     }
 
     @Override

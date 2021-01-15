@@ -34,7 +34,7 @@ public class foodAdapter extends RecyclerView.Adapter<foodAdapter.foodViewHolder
     @Override
     public void onBindViewHolder(@NonNull foodViewHolder holder, int position) {
         holder.nameView.setText(foodies.get(position).getName());
-        holder.priceView.setText(foodies.get(position).getPrice());
+        holder.priceView.setText("IDR " + foodies.get(position).getPrice());
         holder.idView.setText(foodies.get(position).getId());
         holder.descView.setText(foodies.get(position).getDesc());
 
