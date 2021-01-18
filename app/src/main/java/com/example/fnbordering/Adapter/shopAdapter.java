@@ -38,6 +38,7 @@ public class shopAdapter extends RecyclerView.Adapter<shopAdapter.shopViewHolder
         holder.nameView.setText(shopies.get(position).getName());
         holder.locationView.setText(shopies.get(position).getLocation());
         holder.rangeView.setText("IDR " + shopies.get(position).getRange());
+        holder.keyView.setText(shopies.get(position).getKeyId());
 
         holder.button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +56,7 @@ public class shopAdapter extends RecyclerView.Adapter<shopAdapter.shopViewHolder
     }
 
     class shopViewHolder extends RecyclerView.ViewHolder {
-        public TextView nameView, locationView, rangeView;
+        public TextView nameView, locationView, rangeView, keyView;
         public LinearLayout button;
 
         public shopViewHolder(View itemView) {
@@ -63,6 +64,7 @@ public class shopAdapter extends RecyclerView.Adapter<shopAdapter.shopViewHolder
             nameView = (TextView)itemView.findViewById(R.id.restaurant_name);
             locationView = (TextView)itemView.findViewById(R.id.restaurant_location);
             rangeView = (TextView)itemView.findViewById(R.id.restaurant_range);
+            keyView = (TextView)itemView.findViewById(R.id.txtKey);
             button = (LinearLayout) itemView.findViewById(R.id.btnShop);
         }
     }

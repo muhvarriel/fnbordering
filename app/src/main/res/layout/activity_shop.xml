@@ -8,68 +8,60 @@
     android:background="@color/white"
     android:orientation="vertical"
     tools:context=".shop"
-    android:layout_marginStart="40dp">
+    android:backgroundTint="@color/bg"
+    android:paddingEnd="40dp"
+    android:paddingStart="40dp"
+    android:paddingTop="40dp">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/bg"
-        android:background="@drawable/rounded_bg"
-        android:padding="40dp">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <Button
-                android:id="@+id/btnBack"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:background="@drawable/backward_arrow"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Menu"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
-        </LinearLayout>
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/backward_arrow"/>
 
         <TextView
-            android:id="@+id/txtFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginStart="105dp"
             android:fontFamily="@font/montserrat"
-            android:text="Name Restaurant"
+            android:text="Menu"
             android:textColor="@color/white"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/txtLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
-            android:fontFamily="@font/montserrat"
-            android:text="Location"
-            android:textColor="@color/white"
-            android:textSize="10sp" />
-
-
-        <include
-            layout="@layout/food_list"
-            android:layout_width="match_parent"
-            android:layout_height="375dp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Name Restaurant"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/txtLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Location"
+        android:textColor="@color/white"
+        android:textSize="10sp" />
+
+
+    <include
+        layout="@layout/food_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

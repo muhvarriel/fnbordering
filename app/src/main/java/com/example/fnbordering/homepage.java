@@ -6,9 +6,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +40,8 @@ public class homepage extends AppCompatActivity {
     RecyclerView listShop;
     ArrayList<Shop> list;
     shopAdapter adapter;
+
+    ImageView photoShop;
 
     TextView txtFullName, txtBalance;
 
@@ -94,6 +104,9 @@ public class homepage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     Shop p = dataSnapshot.getValue(Shop.class);
+                    String key = dataSnapshot.getKey();
+                    p.setKeyId(key);
+
                     list.add(p);
                 }
 

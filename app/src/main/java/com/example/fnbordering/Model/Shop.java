@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import java.nio.charset.Charset;
 
 public class Shop implements Parcelable {
-    private String name, location, range, categoryId;
+    private String name, location, range, keyId;
 
     public Shop() {
     }
@@ -21,7 +21,7 @@ public class Shop implements Parcelable {
         name = in.readString();
         location = in.readString();
         range = in.readString();
-        categoryId = in.readString();
+        keyId = in.readString();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class Shop implements Parcelable {
         dest.writeString(name);
         dest.writeString(location);
         dest.writeString(range);
-        dest.writeString(categoryId);
+        dest.writeString(keyId);
     }
 
     @Override
@@ -73,11 +73,11 @@ public class Shop implements Parcelable {
         this.range = range;
     }
 
-    public String getCategoryId() {
-        return categoryId;
+    public String getKeyId() {
+        return keyId;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setKeyId(String keyId) {
+        this.keyId = keyId;
     }
 }

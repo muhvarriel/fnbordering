@@ -13,8 +13,7 @@
 
     <LinearLayout
         android:id="@+id/btnProfile"
-        android:gravity="end"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="330dp"
         android:layout_height="170dp"
         android:layout_marginTop="20dp"
@@ -22,42 +21,58 @@
         android:backgroundTint="@color/bg"
         android:padding="25dp">
 
-        <TextView
-            android:id="@+id/txtFullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/photoProfile"
+            android:layout_height="120dp"
+            android:layout_width="120dp"
+            android:src="@drawable/shop1"
+            app:shapeAppearanceOverlay="@style/Circular"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:text="Buyer"
-            android:textColor="@color/white"
-            android:textSize="13sp" />
+        <LinearLayout
+            android:gravity="end"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtBalance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/white"
-            android:textSize="13sp" />
+            <TextView
+                android:id="@+id/txtFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/btnTopup"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:backgroundTint="@color/login"
-            android:fontFamily="@font/montserrat"
-            android:text="Top Up"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="12sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="Buyer"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/txtBalance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/montserrat"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/btnTopup"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:backgroundTint="@color/login"
+                android:fontFamily="@font/montserrat"
+                android:text="Top Up"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

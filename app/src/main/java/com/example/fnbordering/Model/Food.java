@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Food implements Parcelable {
-    private String name, price, id, desc;
+    private String name, price, id, desc, key;
 
     public Food() {
     }
@@ -21,6 +21,7 @@ public class Food implements Parcelable {
         price = in.readString();
         id = in.readString();
         desc = in.readString();
+        key = in.readString();
     }
 
     public static final Creator<Food> CREATOR = new Creator<Food>() {
@@ -67,6 +68,14 @@ public class Food implements Parcelable {
         this.desc = desc;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,5 +87,6 @@ public class Food implements Parcelable {
         dest.writeString(price);
         dest.writeString(id);
         dest.writeString(desc);
+        dest.writeString(key);
     }
 }

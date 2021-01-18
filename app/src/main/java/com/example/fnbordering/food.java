@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -75,21 +76,27 @@ public class food extends AppCompatActivity {
 
         //InitFirebase
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference order = database.getReference("Order");
-        DatabaseReference newPostRef = order.push();
+        final DatabaseReference cart = database.getReference("Cart");
+        DatabaseReference newPostRef = cart.push();
 
         btnAddcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                order.addValueEventListener(new ValueEventListener() {
+                cart.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        Cart order = new Cart(currentFood.getId(), currentFood.getName(), numberButton.getNumber(), currentFood.getPrice(), Common.currentUse.username);
-                        newPostRef.setValue(order);
+                        int i = Integer.parseInt(numberButton.getNumber().trim());
 
-                        Toast.makeText(food.this, "Add To Successfully !", Toast.LENGTH_SHORT).show();
-                        Intent back = new Intent(food.this, cart.class);
-                        startActivity(back);
+                        if (i == 0) {
+                            Toast.makeText(food.this, "Please enter the quantity !!!", Toast.LENGTH_SHORT).show();
+                        } else if (i > 0) {
+                            Cart order = new Cart(currentFood.getId(), currentFood.getName(), numberButton.getNumber(), currentFood.getPrice(), Common.currentUse.username);
+                            newPostRef.setValue(order);
+
+                            Toast.makeText(food.this, "Add To Successfully !", Toast.LENGTH_SHORT).show();
+                            Intent back = new Intent(food.this, cart.class);
+                            startActivity(back);
+                        }
                     }
 
                     @Override

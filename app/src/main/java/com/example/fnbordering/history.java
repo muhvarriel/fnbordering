@@ -51,9 +51,8 @@ public class history extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         history = database.getReference("History");
-        userHistory = history.child(Common.currentUse.username);
 
-        userHistory.addValueEventListener(new ValueEventListener() {
+        history.orderByChild("user").equalTo(Common.currentUse.username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {

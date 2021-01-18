@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/btnFood"
     android:orientation="horizontal"
-    android:layout_width="250dp"
+    android:layout_width="330dp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
     android:backgroundTint="@color/login"
     android:background="@drawable/rounded_cg"
     tools:context=".shop"
     android:padding="20dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/photoFood"
+        android:layout_height="50dp"
+        android:layout_width="50dp"
+        android:src="@drawable/shop1"
+        app:shapeAppearanceOverlay="@style/RoundedSmaller"/>
 
     <LinearLayout
         android:orientation="vertical"

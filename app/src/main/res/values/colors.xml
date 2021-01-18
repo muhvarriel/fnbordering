@@ -6,8 +6,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="bg">#0071BC</color>
-    <color name="login">#009EE9</color>
+    <color name="bg">#0F752E</color>
+    <color name="login">#31B057</color>
     <color name="sub">#CCCCCC</color>
     <color name="sub2">#666666</color>
 </resources>

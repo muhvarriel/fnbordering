@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fnbordering.Adapter.cartAdapter;
+import com.example.fnbordering.Common.Common;
 import com.example.fnbordering.Model.Cart;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +37,7 @@ public class cart extends AppCompatActivity {
     cartAdapter adapter;
 
     TextView txtTotal;
+    ImageView btnRemove;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,15 +79,43 @@ public class cart extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         cart = database.getReference("Cart");
 
-        cart.addValueEventListener(new ValueEventListener() {
+        cart.orderByChild("user").equalTo(Common.currentUse.username).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 int total = 0;
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     Cart p = dataSnapshot.getValue(Cart.class);
+                    String key = dataSnapshot.getKey();
                     list.add(p);
                     total += (Integer.parseInt(p.getPrice())) * (Integer.parseInt(p.getQuantity()));
+
+                    btnRemove = (ImageView) findViewById(R.id.btnRemove);
+
+                    btnRemove.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
+
+                            builder.setTitle("Delete");
+                            builder.setMessage("Do you want to delete " + p.getProductName());
+                            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    DatabaseReference cartDel = FirebaseDatabase.getInstance().getReference("Cart").child(key);
+
+                                    cartDel.removeValue();
+                                    Toast.makeText(cart.this, "Delete Item Successfully !", Toast.LENGTH_SHORT).show();
+                                }
+                            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            builder.show();
+                        }
+                    });
                 }
 
                 adapter = new cartAdapter(cart.this,list);

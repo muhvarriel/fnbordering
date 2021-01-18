@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +31,8 @@ public class shop extends AppCompatActivity {
     RecyclerView listFood;
     ArrayList<Food> list;
     foodAdapter adapter;
+
+    ImageView photoFood;
 
     Button btnBack;
     TextView txtFullName, txtLocation;
@@ -64,7 +67,7 @@ public class shop extends AppCompatActivity {
         txtFullName.setText(shop.getName());
         txtLocation.setText(shop.getLocation());
 
-        food.addValueEventListener(new ValueEventListener() {
+        food.orderByChild("id").equalTo(shop.getKeyId()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {

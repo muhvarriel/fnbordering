@@ -14,7 +14,6 @@
         android:orientation="vertical"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:backgroundTint="@color/bg"
         android:background="@drawable/rounded_bg"
         android:padding="40dp">
@@ -42,16 +41,25 @@
 
         </LinearLayout>
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/photoProfile"
+            android:layout_marginTop="30dp"
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:layout_gravity="center"
+            android:src="@drawable/shop1"
+            app:shapeAppearanceOverlay="@style/Circular"/>
+
         <TextView
             android:id="@+id/txtFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat"
             android:text="Varriel Nizar"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,7 +68,8 @@
             android:fontFamily="@font/montserrat"
             android:text="Buyer"
             android:textColor="@color/white"
-            android:textSize="15sp" />
+            android:textSize="12sp" />
+
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,7 +78,7 @@
             android:fontFamily="@font/montserrat"
             android:text="Current Cash"
             android:textColor="@color/white"
-            android:textSize="13sp" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/txtBalance"
@@ -79,10 +88,10 @@
             android:fontFamily="@font/montserrat"
             android:text="IDR 50.000"
             android:textColor="@color/white"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <LinearLayout
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
