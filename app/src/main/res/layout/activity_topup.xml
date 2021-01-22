@@ -47,7 +47,7 @@
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_gravity="center"
-            android:src="@drawable/shop1"
+            android:src="@drawable/profile_null"
             app:shapeAppearanceOverlay="@style/Circular"/>
 
         <TextView

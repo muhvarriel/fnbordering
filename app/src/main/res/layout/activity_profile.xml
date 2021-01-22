@@ -48,8 +48,22 @@
             android:layout_height="100dp"
             android:layout_width="100dp"
             android:layout_gravity="center"
-            android:src="@drawable/shop1"
+            android:src="@drawable/profile_null"
             app:shapeAppearanceOverlay="@style/Circular"/>
+
+        <LinearLayout
+            android:layout_marginTop="-13dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/btnUpload"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:src="@drawable/edit" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txtFullName"

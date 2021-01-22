@@ -16,7 +16,8 @@
         android:id="@+id/photoShop"
         android:layout_height="70dp"
         android:layout_width="70dp"
-        android:src="@drawable/shop1"
+        android:src="@drawable/food01"
+        android:scaleType="fitXY"
         app:shapeAppearanceOverlay="@style/RoundedSquare"/>
 
     <LinearLayout

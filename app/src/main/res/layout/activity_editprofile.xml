@@ -61,6 +61,20 @@
             android:textSize="22sp" />
 
         <EditText
+            android:id="@+id/edtEmail"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_cg"
+            android:fontFamily="@font/montserrat"
+            android:hint="Email"
+            android:paddingHorizontal="20dp"
+            android:text=""
+            android:textColor="@color/bg"
+            android:textColorHint="@color/bg"
+            android:textSize="15sp" />
+
+        <EditText
             android:id="@+id/edtName"
             android:layout_width="250dp"
             android:layout_height="50dp"
@@ -107,7 +121,7 @@
             android:id="@+id/btnEdtProfile"
             android:layout_width="250dp"
             android:layout_height="80dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="25dp"
             android:backgroundTint="@color/login"
             android:fontFamily="@font/montserrat_bold"
             android:text="Save"

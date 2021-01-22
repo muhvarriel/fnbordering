@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fnbordering.Common.Common;
@@ -14,6 +15,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class profile extends AppCompatActivity {
     Button btnBack, btnSignout, btnHistory, btnEdit;
     TextView txtFullName, txtBalance, txtUsername;
+
+    ImageView btnUpload;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,7 @@ public class profile extends AppCompatActivity {
         btnEdit = (Button)findViewById(R.id.btnEdit);
         btnHistory = (Button)findViewById(R.id.btnHistory);
         btnSignout = (Button)findViewById(R.id.btnSignout);
+        btnUpload = (ImageView)findViewById(R.id.btnUpload);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override

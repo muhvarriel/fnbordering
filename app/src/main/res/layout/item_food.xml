@@ -16,7 +16,8 @@
         android:id="@+id/photoFood"
         android:layout_height="50dp"
         android:layout_width="50dp"
-        android:src="@drawable/shop1"
+        android:src="@drawable/food01"
+        android:scaleType="fitXY"
         app:shapeAppearanceOverlay="@style/RoundedSmaller"/>
 
     <LinearLayout

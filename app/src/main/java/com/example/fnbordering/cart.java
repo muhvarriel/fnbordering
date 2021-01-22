@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 import com.example.fnbordering.Adapter.cartAdapter;
 import com.example.fnbordering.Common.Common;
 import com.example.fnbordering.Model.Cart;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,6 +49,7 @@ public class cart extends AppCompatActivity {
         btnBack = (Button)findViewById(R.id.btnBack);
         btnHome = (Button)findViewById(R.id.btnHome);
         btnCheckout = (Button)findViewById(R.id.btnCheckout);
+        btnRemove = (ImageView) findViewById(R.id.btnRemove);
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,33 +92,6 @@ public class cart extends AppCompatActivity {
                     String key = dataSnapshot.getKey();
                     list.add(p);
                     total += (Integer.parseInt(p.getPrice())) * (Integer.parseInt(p.getQuantity()));
-
-                    btnRemove = (ImageView) findViewById(R.id.btnRemove);
-
-                    btnRemove.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            AlertDialog.Builder builder = new AlertDialog.Builder(v.getRootView().getContext());
-
-                            builder.setTitle("Delete");
-                            builder.setMessage("Do you want to delete " + p.getProductName());
-                            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    DatabaseReference cartDel = FirebaseDatabase.getInstance().getReference("Cart").child(key);
-
-                                    cartDel.removeValue();
-                                    Toast.makeText(cart.this, "Delete Item Successfully !", Toast.LENGTH_SHORT).show();
-                                }
-                            }).setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                            builder.show();
-                        }
-                    });
                 }
 
                 adapter = new cartAdapter(cart.this,list);

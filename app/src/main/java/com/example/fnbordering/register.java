@@ -20,8 +20,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class register extends AppCompatActivity {
 
-    EditText edtUsername, edtPassword, edtName;
+    EditText edtUsername, edtPassword, edtName, edtEmail;
     Button btnBack, btnSignup;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class register extends AppCompatActivity {
         edtPassword = (EditText)findViewById(R.id.edtPassword);
         edtName = (EditText)findViewById(R.id.edtName);
         edtUsername = (EditText)findViewById(R.id.edtUsername);
+        edtEmail = (EditText)findViewById(R.id.edtEmail);
         btnBack = (Button)findViewById(R.id.btnBack);
         btnSignup = (Button)findViewById(R.id.btnSignup);
 
@@ -58,15 +60,35 @@ public class register extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         //Check if already username
-                        if (snapshot.child(edtUsername.getText().toString()).exists()) {
+                        if (edtUsername.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(register.this, "Please fill Username", Toast.LENGTH_SHORT).show();
+                        } else if (edtEmail.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(register.this, "Please fill Email", Toast.LENGTH_SHORT).show();
+                        } else if (edtName.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(register.this, "Please fill Name", Toast.LENGTH_SHORT).show();
+                        } else if (edtPassword.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(register.this, "Please fill Password", Toast.LENGTH_SHORT).show();
+                        } else if (snapshot.child(edtUsername.getText().toString()).exists()) {
                             mDialog.dismiss();
                             Toast.makeText(register.this, "Username already register", Toast.LENGTH_SHORT).show();
-                        } else {
+                        } else if (edtPassword.getText().toString().length() <= 5) {
                             mDialog.dismiss();
-                            User user = new User(edtName.getText().toString(), edtPassword.getText().toString(), "50000", "none");
-                            table_user.child(edtUsername.getText().toString()).setValue(user);
-                            Toast.makeText(register.this, "Register successfully !", Toast.LENGTH_SHORT).show();
-                            finish();
+                            Toast.makeText(register.this, "Minimum password 6 character", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (edtEmail.getText().toString().trim().matches(emailPattern)) {
+                                mDialog.dismiss();
+                                User user = new User(edtName.getText().toString(), edtPassword.getText().toString(), "0", "none", edtEmail.getText().toString());
+                                table_user.child(edtUsername.getText().toString()).setValue(user);
+                                Toast.makeText(register.this, "Register successfully !", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                mDialog.dismiss();
+                                Toast.makeText(register.this, "Invalid email address", Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
 

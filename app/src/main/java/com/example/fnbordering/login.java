@@ -70,22 +70,33 @@ public class login extends AppCompatActivity {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 //Check if user not exist in database
-                                if (snapshot.child(edtUsername.getText().toString()).exists()) {
-                                    //Get User Information
+                                if (edtUsername.getText().toString().isEmpty()) {
                                     mDialog.dismiss();
-                                    User user = snapshot.child(edtUsername.getText().toString()).getValue(User.class);
-                                    user.setUsername(edtUsername.getText().toString());
-                                    if (user.password.equals(edtPassword.getText().toString())) {
-                                        Intent success= new Intent(login.this,homepage.class);
-                                        Common.currentUse = user;
-                                        startActivity(success);
-                                        finish();
-                                    } else {
-                                        Toast.makeText(login.this, "Sign in failed !!!", Toast.LENGTH_SHORT).show();
-                                    }
+                                    Toast.makeText(login.this, "Please fill Username", Toast.LENGTH_SHORT).show();
+                                } else if (edtPassword.getText().toString().isEmpty()) {
+                                    mDialog.dismiss();
+                                    Toast.makeText(login.this, "Please fill Password", Toast.LENGTH_SHORT).show();
+                                } else if (edtPassword.getText().toString().length() <= 5) {
+                                    mDialog.dismiss();
+                                    Toast.makeText(login.this, "Minimum password 6 character", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    mDialog.dismiss();
-                                    Toast.makeText(login.this, "User not exist", Toast.LENGTH_SHORT).show();
+                                    if (snapshot.child(edtUsername.getText().toString()).exists()) {
+                                        //Get User Information
+                                        mDialog.dismiss();
+                                        User user = snapshot.child(edtUsername.getText().toString()).getValue(User.class);
+                                        user.setUsername(edtUsername.getText().toString());
+                                        if (user.password.equals(edtPassword.getText().toString())) {
+                                            Intent success= new Intent(login.this,homepage.class);
+                                            Common.currentUse = user;
+                                            startActivity(success);
+                                            finish();
+                                        } else {
+                                            Toast.makeText(login.this, "Sign in failed !!!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else {
+                                        mDialog.dismiss();
+                                        Toast.makeText(login.this, "User not exist", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
                             }
 

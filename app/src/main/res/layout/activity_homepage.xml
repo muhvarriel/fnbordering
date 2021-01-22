@@ -25,7 +25,7 @@
             android:id="@+id/photoProfile"
             android:layout_height="120dp"
             android:layout_width="120dp"
-            android:src="@drawable/shop1"
+            android:src="@drawable/profile_null"
             app:shapeAppearanceOverlay="@style/Circular"/>
 
         <LinearLayout

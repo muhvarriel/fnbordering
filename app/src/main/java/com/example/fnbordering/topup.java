@@ -72,7 +72,7 @@ public class topup extends AppCompatActivity {
 
                         mDialog.dismiss();
                         mDialog.dismiss();
-                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location);
+                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location, Common.currentUse.email);
                         table_user.child(Common.currentUse.username).setValue(user);
                         Toast.makeText(topup.this, "Top Up Successfully !", Toast.LENGTH_SHORT).show();
                         finish();
@@ -102,7 +102,7 @@ public class topup extends AppCompatActivity {
 
                         mDialog.dismiss();
                         mDialog.dismiss();
-                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location);
+                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location, Common.currentUse.email);
                         table_user.child(Common.currentUse.username).setValue(user);
                         Toast.makeText(topup.this, "Top Up Successfully !", Toast.LENGTH_SHORT).show();
                         finish();
@@ -132,7 +132,7 @@ public class topup extends AppCompatActivity {
 
                         mDialog.dismiss();
                         mDialog.dismiss();
-                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location);
+                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location, Common.currentUse.email);
                         table_user.child(Common.currentUse.username).setValue(user);
                         Toast.makeText(topup.this, "Top Up Successfully !", Toast.LENGTH_SHORT).show();
                         finish();
@@ -162,7 +162,7 @@ public class topup extends AppCompatActivity {
 
                         mDialog.dismiss();
                         mDialog.dismiss();
-                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location);
+                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location, Common.currentUse.email);
                         table_user.child(Common.currentUse.username).setValue(user);
                         Toast.makeText(topup.this, "Top Up Successfully !", Toast.LENGTH_SHORT).show();
                         finish();
@@ -192,7 +192,7 @@ public class topup extends AppCompatActivity {
 
                         mDialog.dismiss();
                         mDialog.dismiss();
-                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location);
+                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location, Common.currentUse.email);
                         table_user.child(Common.currentUse.username).setValue(user);
                         Toast.makeText(topup.this, "Top Up Successfully !", Toast.LENGTH_SHORT).show();
                         finish();
@@ -222,7 +222,7 @@ public class topup extends AppCompatActivity {
 
                         mDialog.dismiss();
                         mDialog.dismiss();
-                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location);
+                        User user = new User(Common.currentUse.name, Common.currentUse.password, Integer.toString(top), Common.currentUse.location, Common.currentUse.email);
                         table_user.child(Common.currentUse.username).setValue(user);
                         Toast.makeText(topup.this, "Top Up Successfully !", Toast.LENGTH_SHORT).show();
                         finish();

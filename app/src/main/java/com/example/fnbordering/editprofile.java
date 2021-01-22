@@ -22,8 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class editprofile extends AppCompatActivity {
     Button btnBack, btnEdtProfile;
-    EditText edtName, edtPassword, edtLocation;
+    EditText edtName, edtPassword, edtLocation, edtEmail;
     TextView txtUsername;
+
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class editprofile extends AppCompatActivity {
         String TAG = "Edit Profile";
 
         txtUsername = (TextView) findViewById(R.id.txtUsername);
+        edtEmail = (EditText)findViewById(R.id.edtEmail);
         edtPassword = (EditText)findViewById(R.id.edtPassword);
         edtName = (EditText)findViewById(R.id.edtName);
         edtLocation = (EditText)findViewById(R.id.edtLocation);
@@ -65,10 +68,33 @@ public class editprofile extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         mDialog.dismiss();
                         mDialog.dismiss();
-                        User user = new User(edtName.getText().toString(), edtPassword.getText().toString(), Common.currentUse.balance, edtLocation.getText().toString());
-                        table_user.child(txtUsername.getText().toString()).setValue(user);
-                        Toast.makeText(editprofile.this, "Save successfully !", Toast.LENGTH_SHORT).show();
-                        finish();
+                        if (edtEmail.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(editprofile.this, "Please fill Email", Toast.LENGTH_SHORT).show();
+                        } else if (edtName.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(editprofile.this, "Please fill Name", Toast.LENGTH_SHORT).show();
+                        } else if (edtPassword.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(editprofile.this, "Please fill Password", Toast.LENGTH_SHORT).show();
+                        } else if (edtLocation.getText().toString().isEmpty()) {
+                            mDialog.dismiss();
+                            Toast.makeText(editprofile.this, "Please fill Location", Toast.LENGTH_SHORT).show();
+                        } else if (edtPassword.getText().toString().length() <= 5) {
+                            mDialog.dismiss();
+                            Toast.makeText(editprofile.this, "Minimum password 6 character", Toast.LENGTH_SHORT).show();
+                        } else {
+                            if (edtEmail.getText().toString().trim().matches(emailPattern)) {
+                                mDialog.dismiss();
+                                User user = new User(edtName.getText().toString(), edtPassword.getText().toString(), Common.currentUse.balance, edtLocation.getText().toString(), edtEmail.getText().toString());
+                                table_user.child(txtUsername.getText().toString()).setValue(user);
+                                Toast.makeText(editprofile.this, "Save successfully !", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                mDialog.dismiss();
+                                Toast.makeText(editprofile.this, "Invalid email address", Toast.LENGTH_SHORT).show();
+                            }
+                        }
                     }
 
                     @Override

@@ -1,16 +1,17 @@
 package com.example.fnbordering.Model;
 
 public class User {
-    public String name, password, location, balance, username;
+    public String name, password, location, balance, email, username;
 
     public User() {
     }
 
-    public User(String name, String password, String balance, String location) {
+    public User(String name, String password, String balance, String location, String email) {
         this.name = name;
         this.password = password;
         this.balance = balance;
         this.location = location;
+        this.email = email;
     }
 
     public String getName() {
@@ -43,6 +44,14 @@ public class User {
 
     public void setBalance(String balance) {
         this.balance = balance;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {

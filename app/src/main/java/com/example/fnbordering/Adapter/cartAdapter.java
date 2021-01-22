@@ -20,7 +20,9 @@ import com.example.fnbordering.Common.Common;
 import com.example.fnbordering.Model.Cart;
 import com.example.fnbordering.R;
 import com.example.fnbordering.cart;
+import com.example.fnbordering.checkout;
 import com.example.fnbordering.food;
+import com.example.fnbordering.topup;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,6 +55,13 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.cartViewHolder
 
         int price = (Integer.parseInt(listData.get(position).getPrice()))*(Integer.parseInt(listData.get(position).getQuantity()));
         holder.priceView.setText("IDR " + price);
+
+        holder.removeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 
     @Override
@@ -62,12 +71,14 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.cartViewHolder
 
     class cartViewHolder extends RecyclerView.ViewHolder {
         public TextView nameView, priceView, quantityView;
+        public ImageView removeView;
 
         public cartViewHolder(View itemView) {
             super(itemView);
             nameView = (TextView)itemView.findViewById(R.id.txtName);
             priceView = (TextView)itemView.findViewById(R.id.txtPrice);
             quantityView = (TextView)itemView.findViewById(R.id.txtQuantity);
+            removeView = (ImageView)itemView.findViewById(R.id.btnRemove);
         }
     }
 }
