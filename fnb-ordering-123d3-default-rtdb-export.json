@@ -1,0 +1,187 @@
+{
+  "Cart" : {
+    "-MR4P30jc4-qor73WR1k" : {
+      "price" : "35000",
+      "productId" : "001",
+      "productName" : "Pizza Cheese",
+      "quantity" : "2",
+      "user" : "hazrd"
+    },
+    "-MR4PDlHTtMJBiLPUwET" : {
+      "price" : "50000",
+      "productId" : "001",
+      "productName" : "Pizza Molen",
+      "quantity" : "1",
+      "user" : "hazrd"
+    },
+    "-MR8-IJCAiJa3Nhg0xrO" : {
+      "price" : "50000",
+      "productId" : "001",
+      "productName" : "Pizza Molen",
+      "quantity" : "2",
+      "user" : "hazrd"
+    },
+    "-MRKkCl_p4yC-Js9VkKe" : {
+      "price" : "50000",
+      "productId" : "001",
+      "productName" : "Pizza Molen",
+      "quantity" : "5",
+      "user" : "hazrd"
+    },
+    "-MRUxycc2wndAzEaeugq" : {
+      "price" : "50000",
+      "productId" : "001",
+      "productName" : "Pizza Molen",
+      "quantity" : "1",
+      "user" : "hazrd"
+    },
+    "-MRV0zZhIDlXOVV_Az2u" : {
+      "price" : "20000",
+      "productId" : "002",
+      "productName" : "Lime Dash",
+      "quantity" : "2",
+      "user" : "tabibito"
+    },
+    "-MRV1325mfpjNbcyLpdH" : {
+      "price" : "150000",
+      "productId" : "001",
+      "productName" : "Pizza Rabbit",
+      "quantity" : "1",
+      "user" : "tabibito"
+    }
+  },
+  "Food" : {
+    "0001" : {
+      "desc" : "Very Yummy",
+      "id" : "001",
+      "name" : "Pizza Molen",
+      "price" : "50000"
+    },
+    "0002" : {
+      "desc" : "Great",
+      "id" : "001",
+      "name" : "Pizza Cheese",
+      "price" : "35000"
+    },
+    "0003" : {
+      "desc" : "Awesome",
+      "id" : "001",
+      "name" : "Pizza Rabbit",
+      "price" : "150000"
+    },
+    "0004" : {
+      "desc" : "Nice",
+      "id" : "001",
+      "name" : "Pizza Dash",
+      "price" : "20000"
+    },
+    "0005" : {
+      "desc" : "Incredible",
+      "id" : "002",
+      "name" : "Lime Dash",
+      "price" : "20000"
+    }
+  },
+  "History" : {
+    "01" : {
+      "price" : "50000",
+      "productId" : "0001",
+      "productName" : "Pizza Molen",
+      "quantity" : "1",
+      "user" : "hazrd"
+    },
+    "02" : {
+      "price" : "150000",
+      "productId" : "0003",
+      "productName" : "Pizza Rabbit",
+      "quantity" : "3",
+      "user" : "hazrd"
+    }
+  },
+  "Shop" : {
+    "001" : {
+      "location" : "Jl. Pd. Labu Raya No.4, Kota Jakarta Selatan",
+      "name" : "Pizza Exd",
+      "range" : "50000 - 100000"
+    },
+    "002" : {
+      "location" : "Jl. Jemb. 3 Raya, Kota Jakarta Utara",
+      "name" : "Lime Good",
+      "range" : "50000 - 100000"
+    },
+    "003" : {
+      "location" : "Jl. Ganyu No.11, Kota Jakarta Selatan",
+      "name" : "Cocogoat Milk",
+      "range" : "30000 - 250000"
+    },
+    "004" : {
+      "location" : "Jl. Ampera Raya No.119, Kota Jakarta Selatan",
+      "name" : "Ampera Garden",
+      "range" : "100000 - 200000"
+    },
+    "005" : {
+      "location" : "Jl. Rajasa III No.1A, Kota Jakarta Selatan",
+      "name" : "Cook Dash",
+      "range" : "50000 - 150000"
+    },
+    "006" : {
+      "location" : "Jl. Veteran No.9C, Kota Jakarta Selatan",
+      "name" : "Burgushi",
+      "range" : "50000 - 500000"
+    },
+    "007" : {
+      "location" : "Jl. Kijang No.29, Kota Jakarta Selatan",
+      "name" : "Rujak House",
+      "range" : "100000 - 200000"
+    },
+    "008" : {
+      "location" : "Jl. Delasi Raya No.54, Kota Jakarta Selatan",
+      "name" : "Banana Split",
+      "range" : "100000 - 300000"
+    }
+  },
+  "User" : {
+    "barwis" : {
+      "balance" : "0",
+      "email" : "akbar@gmail.com",
+      "location" : "none",
+      "name" : "nadya",
+      "password" : "123456"
+    },
+    "hazrd" : {
+      "balance" : "1124000",
+      "email" : "wisnubar@gmail.com",
+      "location" : "Jl. Jeruk Purut No. 59A Jakarta Selatan",
+      "name" : "Wisnu Bar",
+      "password" : "123456"
+    },
+    "nawaf" : {
+      "balance" : "110000",
+      "email" : "nawaf@gmail.com",
+      "location" : "none",
+      "name" : "binzar",
+      "password" : "123456"
+    },
+    "tabibito" : {
+      "balance" : "720000",
+      "email" : "jp@gmail.com",
+      "location" : "jeruk perut, jaksel",
+      "name" : "teuku",
+      "password" : "123456"
+    },
+    "udin" : {
+      "balance" : "0",
+      "email" : "saroyu@gmail.com",
+      "location" : "none",
+      "name" : "raju",
+      "password" : "123456"
+    },
+    "varriel_nzr" : {
+      "balance" : "50000",
+      "email" : "muhvarriel@gmail.com",
+      "location" : "none",
+      "name" : "Varriel",
+      "password" : "123456"
+    }
+  }
+}
