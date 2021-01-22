@@ -2,6 +2,8 @@ package com.example.fnbordering;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fnbordering.Adapter.cartAdapter;
 import com.example.fnbordering.Common.Common;
 import com.example.fnbordering.Model.Cart;
 import com.example.fnbordering.Model.History;
@@ -29,8 +32,12 @@ import java.util.List;
 import java.util.Map;
 
 public class checkout extends AppCompatActivity {
+
     FirebaseDatabase database;
     DatabaseReference cart;
+    RecyclerView listCart;
+    ArrayList<Cart> list;
+    cartAdapter adapter;
 
     Button btnBack, btnTopup, btnOrder;
     TextView txtTotal, txtBalance;
@@ -65,6 +72,11 @@ public class checkout extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         cart = database.getReference("Cart");
 
+        //init
+        listCart = (RecyclerView) findViewById(R.id.listCart);
+        listCart.setLayoutManager(new LinearLayoutManager(this));
+        list = new ArrayList<>();
+
         txtBalance = (TextView) findViewById(R.id.txtBalance);
         edtLocation = (EditText) findViewById(R.id.edtLocation);
 
@@ -83,8 +95,12 @@ public class checkout extends AppCompatActivity {
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     Cart p = dataSnapshot.getValue(Cart.class);
+                    list.add(p);
                     total += (Integer.parseInt(p.getPrice())) * (Integer.parseInt(p.getQuantity()));
                 }
+
+                adapter = new cartAdapter(checkout.this,list);
+                listCart.setAdapter(adapter);
 
                 txtTotal = (TextView) findViewById(R.id.txtTotal);
                 txtTotal.setText("IDR " + total);
